@@ -6,6 +6,7 @@ public class GemCollect : MonoBehaviour
 {
 
     public Animator anim;
+
     private bool isCollected;
 
 

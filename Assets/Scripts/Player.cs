@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 
     public float speed;
     public float jumpForce;
+
     private float moveInput;
     bool lookRight;
 
@@ -16,6 +17,9 @@ public class Player : MonoBehaviour
     public Transform feetPos;
     public float checkRadius;
     public LayerMask whatIsGround;
+
+
+    public ParticleSystem steps;
 
 
     private Animator anim;
@@ -28,6 +32,10 @@ public class Player : MonoBehaviour
 
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+
+
+        CheckJump();
+
     }
 
 
@@ -47,11 +55,17 @@ public class Player : MonoBehaviour
         if(moveInput == 0)
         {
             anim.SetBool("isRunning", false);
+            steps.startLifetime = 0f;
         }
         else
         {
             anim.SetBool("isRunning", true);
+            steps.startLifetime = 0.85f;
+            
         }
+
+       
+       
     }
 
     private void Update()
@@ -62,7 +76,7 @@ public class Player : MonoBehaviour
         //Прыжок
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
 
-        if(isGrounded == true && /* Input.GetKeyDown(KeyCode.Space) */ verticalMove >= .5f)
+        if(isGrounded == true && verticalMove >= .5f)
         {
             rb.velocity = Vector2.up * jumpForce;
 
@@ -77,6 +91,7 @@ public class Player : MonoBehaviour
         else
         {
             anim.SetBool("isJumping", true);
+            steps.startLifetime = 0f;
         }
     }
 
@@ -94,5 +109,12 @@ public class Player : MonoBehaviour
 
     }
 
+
+    public void CheckJump()
+    {
+
+        jumpForce = PlayerPrefs.GetInt("JumpForce", 16);
+
+    }
 
 }

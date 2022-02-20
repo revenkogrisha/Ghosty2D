@@ -19,7 +19,12 @@ public class GameManager : MonoBehaviour
 
     public bool haveKey;
 
+    public bool unlockRed;
+    public bool unlockBlue;
+
     public int crystals;
+
+
 
 
     
@@ -29,6 +34,9 @@ public class GameManager : MonoBehaviour
         haveKey = false;
 
         gameHasEnded = false;
+
+        unlockRed = false;
+        unlockBlue = false;
 
         crystals = 0;
     }
@@ -68,7 +76,10 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
+
+
         //Crystals
+
         if(SceneManager.GetActiveScene().buildIndex == 1 && crystals > PlayerPrefs.GetInt("M1L1"))
         {
             PlayerPrefs.SetInt("M1L1", crystals);
@@ -77,6 +88,15 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("M1L2", crystals);
         }
+        else if (SceneManager.GetActiveScene().buildIndex == 4 && crystals > PlayerPrefs.GetInt("M2L1"))
+        {
+            PlayerPrefs.SetInt("M2L1", crystals);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 5 && crystals > PlayerPrefs.GetInt("M2L2"))
+        {
+            PlayerPrefs.SetInt("M2L2", crystals);
+        }
+
     }
 
     public void UnlockLevel()
@@ -89,13 +109,21 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("levels", 2);
             SceneManager.LoadScene(0);
 
+            if (SceneManager.GetActiveScene().buildIndex == 1 && crystals > PlayerPrefs.GetInt("M1L3"))
+            {
+
+                PlayerPrefs.SetInt("M1L3", crystals);
+                
+            }
+
+
         }
         
 
 
     }
 
-    void Restart()
+    public void Restart()
     {
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);  

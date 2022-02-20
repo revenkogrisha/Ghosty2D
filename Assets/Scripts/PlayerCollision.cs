@@ -6,7 +6,19 @@ using UnityEngine.SceneManagement;
 public class PlayerCollision : MonoBehaviour
 {
 
-    
+    private GameManager gm;
+    private Player player;
+
+
+
+    private void Awake()
+    {
+
+        gm = FindObjectOfType<GameManager>();
+        player = GetComponent<Player>();
+
+    }
+
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -15,20 +27,28 @@ public class PlayerCollision : MonoBehaviour
         if(collision.gameObject.tag.Equals("DeadLine"))
         {
 
-            FindObjectOfType<GameManager>().EndGame();
+            gm.EndGame();
             
         }
         else if (collision.gameObject.tag.Equals("Finish") && SceneManager.GetActiveScene().buildIndex == 3)
         {
 
             Debug.Log("Collision");
-            FindObjectOfType<GameManager>().UnlockLevel();
+            gm.UnlockLevel();
 
         }
         else if(collision.gameObject.tag.Equals("Finish"))
         {
 
-            FindObjectOfType<GameManager>().Finish();
+            gm.Finish();
+            
+        }
+        else if(collision.gameObject.tag.Equals("JumpUpgrade"))
+        {
+
+            collision.gameObject.GetComponentInChildren<Animator>().SetBool("isCollected", true);
+            PlayerPrefs.SetInt("JumpForce", 24);
+            player.CheckJump();
             
         }
 
@@ -38,13 +58,28 @@ public class PlayerCollision : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         
-        if(collision.gameObject.tag.Equals("FinishBlock") && FindObjectOfType<GameManager>().gemCount >= 3)
+        if(collision.gameObject.tag.Equals("FinishBlock") && gm.gemCount >= 3)
         {
 
             Destroy(collision.gameObject);
 
         }
-        else if (collision.gameObject.tag.Equals("KeyBlock") && FindObjectOfType<GameManager>().haveKey)
+        else if (collision.gameObject.tag.Equals("KeyBlock") && gm.haveKey)
+        {
+
+            Destroy(collision.gameObject);
+
+        }
+
+        //                                               COLOR_LOCKS
+
+        else if (collision.gameObject.tag.Equals("ColorLock") && collision.gameObject.GetComponent<SpriteRenderer>().color == Color.red && gm.unlockRed)
+        {
+
+            Destroy(collision.gameObject);
+
+        }
+        else if (collision.gameObject.tag.Equals("ColorLock") && collision.gameObject.GetComponent<SpriteRenderer>().color == Color.blue && gm.unlockBlue)
         {
 
             Destroy(collision.gameObject);
@@ -57,13 +92,13 @@ public class PlayerCollision : MonoBehaviour
         {
 
             Destroy(collision.gameObject);
-            FindObjectOfType<GameManager>().crystals += 1;
+            gm.crystals += 1;
 
         }
         else if (collision.gameObject.tag.Equals("Crystal") && SceneManager.GetActiveScene().buildIndex == 2)
         {
 
-            FindObjectOfType<GameManager>().crystals += 1;
+            gm.crystals += 1;
             Destroy(collision.gameObject);
 
         }

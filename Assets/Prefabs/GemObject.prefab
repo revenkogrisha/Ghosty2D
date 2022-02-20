@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7655845687642402199}
   - component: {fileID: 7655845687642402200}
   - component: {fileID: 7655845687642402198}
-  - component: {fileID: 6391828327901107859}
   m_Layer: 0
   m_Name: Gem
   m_TagString: Untagged
@@ -70,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1996979625
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c5860e9a7bfadc04d827591e26bd56fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -102,21 +101,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!111 &6391828327901107859
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7655845687642402201}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 478388364bcaa1f48a5ebef6e748ca02, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1 &7655845688682297723
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,8 +147,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0050315857, y: -1.32395}
-  m_Size: {x: 1.7786331, y: 3.4868112}
+  m_Offset: {x: -0.0050315857, y: -1.5667627}
+  m_Size: {x: 1.7786331, y: 3.9724364}
   m_Direction: 0
 --- !u!114 &1315038642311308517
 MonoBehaviour:

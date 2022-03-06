@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PlayerCollision : MonoBehaviour
@@ -8,6 +9,9 @@ public class PlayerCollision : MonoBehaviour
 
     private GameManager gm;
     private Player player;
+
+
+    public Animator advTxt;
 
 
 
@@ -30,10 +34,9 @@ public class PlayerCollision : MonoBehaviour
             gm.EndGame();
             
         }
-        else if (collision.gameObject.tag.Equals("Finish") && SceneManager.GetActiveScene().buildIndex == 3)
+        else if ( collision.gameObject.tag.Equals("Finish") && ( SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 6) )
         {
 
-            Debug.Log("Collision");
             gm.UnlockLevel();
 
         }
@@ -47,9 +50,21 @@ public class PlayerCollision : MonoBehaviour
         {
 
             collision.gameObject.GetComponentInChildren<Animator>().SetBool("isCollected", true);
-            PlayerPrefs.SetInt("JumpForce", 24);
+            PlayerPrefs.SetInt("JumpForce", 23);
             player.CheckJump();
             
+        }
+        else if (collision.gameObject.tag.Equals("Man"))
+        {
+
+            gm.EndGame();
+
+        }
+        else if (collision.gameObject.tag.Equals("Advice"))
+        {
+
+            advTxt.SetBool("Trigger", true);
+
         }
 
     }

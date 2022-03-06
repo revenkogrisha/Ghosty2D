@@ -16,10 +16,28 @@ public class SkinUnlocker : MonoBehaviour
     private void Start()
     {
 
+        SkinsCheck();
+
+    }
+
+
+
+
+
+    public void SkinsCheck()
+    {
+
         for (int i = 0; i < buttons.Length; i++)
         {
 
-            if ( PlayerPrefs.GetInt("Crystals") >= i )
+            if (PlayerPrefs.GetInt("Crystals") >= i && i == 0)
+            {
+
+                buttons[i].interactable = true;
+                Destroy(images[i]);
+
+            }
+            else if (PlayerPrefs.GetInt("Crystals") > i)
             {
 
                 buttons[i].interactable = true;
@@ -31,7 +49,6 @@ public class SkinUnlocker : MonoBehaviour
         }
 
     }
-
 
     public void SetSkin(int skinNum)
     {

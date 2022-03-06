@@ -3,7 +3,7 @@
 public class SkinManager : MonoBehaviour
 {
 
-     [SerializeField] private SpriteRenderer hatSkin;
+    [SerializeField] private SpriteRenderer hatSkin;
     [SerializeField] public Sprite[] hats;
 
     private Sprite sprite;
@@ -21,6 +21,10 @@ public class SkinManager : MonoBehaviour
 
             case 1:
                 sprite = hats[1];
+                break;
+
+            case 2:
+                sprite = hats[2];
                 break;
 
         }

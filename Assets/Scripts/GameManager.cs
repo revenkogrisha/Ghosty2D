@@ -96,6 +96,7 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("M2L2", crystals);
         }
+        
 
     }
 
@@ -105,15 +106,28 @@ public class GameManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex == 3 && PlayerPrefs.GetInt("levels") < 2)
         {
-            Debug.Log("Unlock");
             PlayerPrefs.SetInt("levels", 2);
             SceneManager.LoadScene(0);
 
-            if (SceneManager.GetActiveScene().buildIndex == 1 && crystals > PlayerPrefs.GetInt("M1L3"))
+            if (crystals > PlayerPrefs.GetInt("M1L3"))
             {
 
                 PlayerPrefs.SetInt("M1L3", crystals);
                 
+            }
+
+
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 6 && PlayerPrefs.GetInt("levels") < 3)
+        {
+            PlayerPrefs.SetInt("levels", 3);
+            SceneManager.LoadScene(0);
+
+            if (crystals > PlayerPrefs.GetInt("M2L3"))
+            {
+
+                PlayerPrefs.SetInt("M2L3", crystals);
+
             }
 
 

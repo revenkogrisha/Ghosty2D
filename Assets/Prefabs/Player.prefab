@@ -127,6 +127,7 @@ MonoBehaviour:
   hats:
   - {fileID: 21300000, guid: 71856ca5119ea01438fc31639a65f7fd, type: 3}
   - {fileID: 21300000, guid: 939f39f775be7a24c8fd9b72f5e347b6, type: 3}
+  - {fileID: 21300000, guid: db14ae13979c0e94789a6c9a93d08608, type: 3}
 --- !u!95 &639310263216649703
 Animator:
   serializedVersion: 3

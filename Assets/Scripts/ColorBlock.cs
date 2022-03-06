@@ -28,14 +28,12 @@ public class ColorBlock : MonoBehaviour
                 {
 
                     gm.unlockRed = true;
-                    Debug.Log("RED");
 
                 }
                 else if (gameObject.GetComponent<SpriteRenderer>().color == Color.blue)
                 {
 
                     gm.unlockBlue = true;
-                    Debug.Log("BLUE");
 
                 }
 

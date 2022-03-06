@@ -36,6 +36,10 @@ public class ImageManager : MonoBehaviour
                 sprite = hats[1];
                 break;
 
+            case 2:
+                sprite = hats[2];
+                break;
+
         }
 
         image.sprite = sprite;

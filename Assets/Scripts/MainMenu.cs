@@ -16,9 +16,9 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         PlayerPrefs.SetInt("Crystals", (PlayerPrefs.GetInt("M1L1") + PlayerPrefs.GetInt("M1L2") + PlayerPrefs.GetInt("M1L3")
-            + PlayerPrefs.GetInt("M2L1") + PlayerPrefs.GetInt("M2L2")));
+            + PlayerPrefs.GetInt("M2L1") + PlayerPrefs.GetInt("M2L2") + PlayerPrefs.GetInt("M2L3")));
 
-        crText.text = $"{PlayerPrefs.GetInt("Crystals").ToString()}/5";
+        crText.text = $"{PlayerPrefs.GetInt("Crystals").ToString()}/6";
     }
 
 
@@ -40,6 +40,7 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetInt("M1L3", 0);
         PlayerPrefs.SetInt("M2L1", 0);
         PlayerPrefs.SetInt("M2L2", 0);
+        PlayerPrefs.SetInt("M2L3", 0);
 
 
         //           Skins
